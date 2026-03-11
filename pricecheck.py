@@ -1,20 +1,3 @@
-# 第一步：先自动安装依赖（解决部署环境缺失akshare问题）
-import subprocess
-import sys
-
-def install_dependencies():
-    """自动安装缺失的依赖包"""
-    required_packages = ['akshare', 'pandas', 'streamlit', 'pypinyin']
-    for package in required_packages:
-        try:
-            __import__(package)
-        except ImportError:
-            subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-
-# 执行自动安装
-install_dependencies()
-
-# 第二步：再导入所有包（此时akshare已安装）
 import streamlit as st
 import akshare as ak
 import pandas as pd
